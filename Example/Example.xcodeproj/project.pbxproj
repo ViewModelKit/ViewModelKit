@@ -18,6 +18,9 @@
 		75247B8D1C7AEFA70046FA43 /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B891C7AEFA70046FA43 /* SimpleTableViewController.swift */; };
 		75247B8E1C7AEFA70046FA43 /* SimpleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B8A1C7AEFA70046FA43 /* SimpleTableView.swift */; };
 		75247B8F1C7AEFA70046FA43 /* SimpleTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B8B1C7AEFA70046FA43 /* SimpleTableViewModel.swift */; };
+		75247B971C7B08E20046FA43 /* IntricateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B961C7B08E20046FA43 /* IntricateTableViewController.swift */; };
+		75247B991C7B08FE0046FA43 /* IntricateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B981C7B08FE0046FA43 /* IntricateTableView.swift */; };
+		75247B9B1C7B09060046FA43 /* IntricateTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B9A1C7B09060046FA43 /* IntricateTableViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		75247B891C7AEFA70046FA43 /* SimpleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
 		75247B8A1C7AEFA70046FA43 /* SimpleTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableView.swift; sourceTree = "<group>"; };
 		75247B8B1C7AEFA70046FA43 /* SimpleTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewModel.swift; sourceTree = "<group>"; };
+		75247B961C7B08E20046FA43 /* IntricateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntricateTableViewController.swift; sourceTree = "<group>"; };
+		75247B981C7B08FE0046FA43 /* IntricateTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntricateTableView.swift; sourceTree = "<group>"; };
+		75247B9A1C7B09060046FA43 /* IntricateTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntricateTableViewModel.swift; sourceTree = "<group>"; };
 		8BF06714AA53568546B68EC0 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		91F4770884F5EF0211FB408B /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C1DE9F2EB12B37123093CBF8 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,8 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				75247B511C7AE6F20046FA43 /* AppDelegate.swift */,
+				75247B9C1C7B0BA70046FA43 /* MultipleCellTypeListView */,
 				75247B901C7AEFB00046FA43 /* SimpleViewController */,
-				75247B911C7AEFB90046FA43 /* SimpleTableViewController */,
+				75247B911C7AEFB90046FA43 /* SingleCellTypeListView */,
 				75247B551C7AE6F20046FA43 /* Main.storyboard */,
 				75247B581C7AE6F20046FA43 /* Assets.xcassets */,
 				75247B5A1C7AE6F20046FA43 /* LaunchScreen.storyboard */,
@@ -91,7 +98,7 @@
 			name = SimpleViewController;
 			sourceTree = "<group>";
 		};
-		75247B911C7AEFB90046FA43 /* SimpleTableViewController */ = {
+		75247B911C7AEFB90046FA43 /* SingleCellTypeListView */ = {
 			isa = PBXGroup;
 			children = (
 				75247B891C7AEFA70046FA43 /* SimpleTableViewController.swift */,
@@ -99,7 +106,17 @@
 				75247B8B1C7AEFA70046FA43 /* SimpleTableViewModel.swift */,
 				75247B881C7AEFA70046FA43 /* JSONData.swift */,
 			);
-			name = SimpleTableViewController;
+			name = SingleCellTypeListView;
+			sourceTree = "<group>";
+		};
+		75247B9C1C7B0BA70046FA43 /* MultipleCellTypeListView */ = {
+			isa = PBXGroup;
+			children = (
+				75247B961C7B08E20046FA43 /* IntricateTableViewController.swift */,
+				75247B981C7B08FE0046FA43 /* IntricateTableView.swift */,
+				75247B9A1C7B09060046FA43 /* IntricateTableViewModel.swift */,
+			);
+			name = MultipleCellTypeListView;
 			sourceTree = "<group>";
 		};
 		DE5A19241C026C4A20E18CA9 /* Pods */ = {
@@ -242,6 +259,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				75247B521C7AE6F20046FA43 /* AppDelegate.swift in Sources */,
+				75247B971C7B08E20046FA43 /* IntricateTableViewController.swift in Sources */,
+				75247B991C7B08FE0046FA43 /* IntricateTableView.swift in Sources */,
+				75247B9B1C7B09060046FA43 /* IntricateTableViewModel.swift in Sources */,
 				75247B8E1C7AEFA70046FA43 /* SimpleTableView.swift in Sources */,
 				75247B8C1C7AEFA70046FA43 /* JSONData.swift in Sources */,
 				75247B8F1C7AEFA70046FA43 /* SimpleTableViewModel.swift in Sources */,

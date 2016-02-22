@@ -1,24 +1,24 @@
 //
-//  SimpleTableView.swift
-//  ViewModelKit
+//  IntricateTableView.swift
+//  Example
 //
-//  Created by Tongtong Xu on 16/2/21.
+//  Created by Tongtong Xu on 16/2/22.
 //  Copyright © 2016年 Tongtong Xu. All rights reserved.
 //
 
 import Foundation
 import ViewModelKit
 
-class StudentCell: TableViewCell, TableViewCellTypeAddition {
+class TeacherCell: TableViewCell, TableViewCellTypeAddition {
     
     override func objDidSet(obj: ModelType?) {
         setCellModel(obj)
     }
     
-    var cellModel: StudentCellModel?
+    var cellModel: TeacherCellModel?
     
     func binding() {
-        textLabel?.text = "Student: \(cellModel!.name)"
+        textLabel?.text = "Teacher: \(cellModel!.name)"
         detailTextLabel?.text = cellModel?.age
     }
 }

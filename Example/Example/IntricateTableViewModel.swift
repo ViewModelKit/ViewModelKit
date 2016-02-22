@@ -1,8 +1,8 @@
 //
-//  SimpleTableViewModel.swift
-//  ViewModelKit
+//  IntricateTableViewModel.swift
+//  Example
 //
-//  Created by Tongtong Xu on 16/2/21.
+//  Created by Tongtong Xu on 16/2/22.
 //  Copyright © 2016年 Tongtong Xu. All rights reserved.
 //
 
@@ -10,20 +10,23 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class SimpleTableViewModel: TableViewModel<Student> {
+class IntricateTableViewModel: TableViewModel<ModelType> {
     
     required init() {
         super.init()
     }
 
     override func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
+        if itemAtIndexPath(indexPath) is Teacher {
+            return TeacherCell.reuseIdentifier
+        }
         return StudentCell.reuseIdentifier
     }
 }
 
-class StudentCellModel: CellModel, CellModelTypeAddition {
+class TeacherCellModel: CellModel, CellModelTypeAddition {
     
-    typealias T = Student
+    typealias T = Teacher
     
     var name: String {
         return model.name
@@ -34,7 +37,7 @@ class StudentCellModel: CellModel, CellModelTypeAddition {
     }
 }
 
-class Student: ModelType {
+class Teacher: ModelType {
     let name: String
     let age: Int
     init(_ x: JSON) {

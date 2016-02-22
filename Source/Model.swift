@@ -14,7 +14,9 @@ public class ModelType {
     public init() { }
 }
 
-public class TableViewModel: TableViewModelType {
+public class TableViewModel<Element: ModelType>: TableViewModelType, TableViewModelTypeAddition {
+    
+    public typealias T = Element
     
     /// It's bridge variable, you'd better not use it directly.
     /// But you can use it in your "Addition" protocol to design your property.
@@ -31,8 +33,10 @@ public class TableViewModel: TableViewModelType {
     }
 }
 
-public class CollectionViewModel: CollectionViewModelType {
+public class CollectionViewModel<Element: ModelType>: CollectionViewModelType, CollectionViewModelTypeAddition {
     
+    public typealias T = Element
+
     /// It's bridge variable, you'd better not use it directly.
     /// But you can use it in your "Addition" protocol to design your property.
     public var objs: [ModelType]? = [ModelType]()

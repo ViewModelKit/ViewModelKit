@@ -17,6 +17,6 @@ class SimpleTableViewController: TableViewController, TableViewControllerType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.items = products.map{JSON($0)}.map(User.init)
+        viewModel.items = students.map{JSON($0)}.map(Student.init)
     }
 }
