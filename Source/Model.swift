@@ -8,6 +8,12 @@
 
 import Foundation
 
+// MARK: - ModelType Class
+public class ModelType {
+    
+    public init() { }
+}
+
 public class TableViewModel: TableViewModelType {
     
     /// It's bridge variable, you'd better not use it directly.

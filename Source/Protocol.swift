@@ -17,14 +17,10 @@ public protocol AutoInitializeType {
     init()
 }
 
-// MARK: - ModelType Class
-public class ModelType { }
-
 // MARK: - ViewModelType Protocol
 public protocol ViewModelType: AutoInitializeType { }
 
 // MARK: - ArrayModelType Protocol
-/// ViewModel content a ModelType Array
 public protocol ArrayModelType: class, AutoInitializeType {
     
     /// It's bridge variable, you'd better not use it directly.
@@ -55,6 +51,7 @@ extension ArrayModelType {
 
 // MARK: - Addition Protocol For ArrayModelType
 public protocol ArrayModelTypeAddition: ArrayModelType {
+    
     typealias T: ModelType
 }
 
@@ -127,7 +124,7 @@ public protocol ViewControllerType: class {
 public extension ViewControllerType {
     
     /// Use it directly.
-    var viewModel: T {
+    public var viewModel: T {
         get {
             return safeViewModel()
         }
@@ -158,7 +155,7 @@ public protocol ListViewControllerType: class {
 
 extension ListViewControllerType {
     /// Use it directly.
-    var viewModel: T {
+    public var viewModel: T {
         get {
             return safeViewModel()
         }

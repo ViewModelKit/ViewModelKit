@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.ios.deployment_target = "8.0"
   s.source   = { :git => "https://github.com/ViewModelKit/ViewModelKit.git", :tag => s.version }
-  s.source_files = "ViewModelKit/*.swift"
+  s.source_files = "Source/*.swift"
 end

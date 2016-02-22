@@ -1,0 +1,17 @@
+PODS:
+  - SwiftyJSON (2.3.2)
+  - ViewModelKit (0.0.1)
+
+DEPENDENCIES:
+  - SwiftyJSON
+  - ViewModelKit (from `../`)
+
+EXTERNAL SOURCES:
+  ViewModelKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  ViewModelKit: c8a92b7a9c5da40a259887207e07e9e0629ffaa1
+
+COCOAPODS: 0.39.0
