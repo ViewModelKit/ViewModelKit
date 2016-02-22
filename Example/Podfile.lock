@@ -1,6 +1,6 @@
 PODS:
   - SwiftyJSON (2.3.2)
-  - ViewModelKit (0.0.1)
+  - ViewModelKit (0.0.2)
 
 DEPENDENCIES:
   - SwiftyJSON
@@ -12,6 +12,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  ViewModelKit: c8a92b7a9c5da40a259887207e07e9e0629ffaa1
+  ViewModelKit: d3deadf09a2103da715146b82b6bfc89e3a3f7f9
 
 COCOAPODS: 0.39.0

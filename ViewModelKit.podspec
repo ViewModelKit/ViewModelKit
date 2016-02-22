@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "ViewModelKit"
-  s.version     = "0.0.1"
+  s.version     = "0.0.2"
   s.summary     = "ViewModelKit makes it easy to deal with ViewModel in Swift"
   s.homepage    = "https://github.com/ViewModelKit/ViewModelKit"
   s.license     = { :type => "MIT" }
@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
   s.ios.deployment_target = "8.0"
-  s.source   = { :git => "https://github.com/ViewModelKit/ViewModelKit.git", :tag => s.version }
+  s.source   = { :git => "https://github.com/ViewModelKit/ViewModelKit.git" } #, :tag => s.version }
   s.source_files = "Source/*.swift"
 end
