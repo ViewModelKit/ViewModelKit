@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		751843C01C7BFF2C00D90AE6 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751843BF1C7BFF2C00D90AE6 /* Bridge.swift */; };
 		75247B6A1C7AE76C0046FA43 /* ViewModelKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B691C7AE76C0046FA43 /* ViewModelKitTests.swift */; };
 		75247B6C1C7AE76C0046FA43 /* ViewModelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75247B311C7AE3190046FA43 /* ViewModelKit.framework */; };
 		75247B7F1C7AEEAE0046FA43 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B791C7AEEAE0046FA43 /* Model.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		751843BF1C7BFF2C00D90AE6 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = Source/Bridge.swift; sourceTree = SOURCE_ROOT; };
 		75247B311C7AE3190046FA43 /* ViewModelKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewModelKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75247B671C7AE76C0046FA43 /* ViewModelKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewModelKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75247B691C7AE76C0046FA43 /* ViewModelKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelKitTests.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				75247B791C7AEEAE0046FA43 /* Model.swift */,
 				75247B7A1C7AEEAE0046FA43 /* Protocol.swift */,
 				75247B7B1C7AEEAE0046FA43 /* View.swift */,
+				751843BF1C7BFF2C00D90AE6 /* Bridge.swift */,
 				75247B7C1C7AEEAE0046FA43 /* ViewController.swift */,
 				75247B7D1C7AEEAE0046FA43 /* ViewModelKit.h */,
 				75247B781C7AEEAE0046FA43 /* Info.plist */,
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751843C01C7BFF2C00D90AE6 /* Bridge.swift in Sources */,
 				75247B7F1C7AEEAE0046FA43 /* Model.swift in Sources */,
 				75247B801C7AEEAE0046FA43 /* Protocol.swift in Sources */,
 				75247B821C7AEEAE0046FA43 /* ViewController.swift in Sources */,

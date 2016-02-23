@@ -18,10 +18,10 @@ public protocol AutoInitializeType {
 }
 
 // MARK: - ViewModelType Protocol
-public protocol ViewModelType: AutoInitializeType { }
+public protocol ViewModelType: class, AutoInitializeType { }
 
 // MARK: - ArrayModelType Protocol
-public protocol ArrayModelType: class, AutoInitializeType {
+public protocol ArrayModelType: class, ViewModelType {
     
     /// It's bridge variable, you'd better not use it directly.
     /// But you can use it in your "Addition" protocol to design your property.

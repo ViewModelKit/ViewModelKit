@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ViewModelKit
 
-class SimpleViewController: ViewController, ViewControllerType {
+class SimpleViewController: ViewController, BridgeTypeAddition {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!

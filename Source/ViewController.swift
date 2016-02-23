@@ -10,18 +10,12 @@ import UIKit
 
 public class ViewController: UIViewController {
     
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    public var obj: ViewModelType!
+    public var bridge = Bridge()
 }
 
-public class TableViewController: UIViewController {
+public class TableViewController: ViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    public var obj: TableViewModelType!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,31 +33,31 @@ public class TableViewController: UIViewController {
 
 extension TableViewController: UITableViewDataSource, UITableViewDelegate {
     
+    private var tableViewModel: TableViewModelType {
+        return (bridge.obj as! TableViewModelType)
+    }
+    
     /// You don't need to override it generally.
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return obj.numberOfSections()
+        return tableViewModel.numberOfSections()
     }
     
     /// You don't need to override it generally.
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return obj.numberOfItemsInSection(section)
+        return tableViewModel.numberOfItemsInSection(section)
     }
     
     /// You don't need to override it generally.
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(obj.cellIdentifierAtIndexPath(indexPath), forIndexPath: indexPath) as! TableViewCell
-        cell.obj = obj.itemAtIndexPath(indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(tableViewModel.cellIdentifierAtIndexPath(indexPath), forIndexPath: indexPath) as! TableViewCell
+        cell.obj = tableViewModel.itemAtIndexPath(indexPath)
         return cell
     }
 }
 
-public class CollectionViewController: UIViewController {
+public class CollectionViewController: ViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    public var obj: CollectionViewModelType!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,20 +73,24 @@ public class CollectionViewController: UIViewController {
 
 extension CollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
+    private var collectionViewModel: CollectionViewModelType {
+        return (bridge.obj as! CollectionViewModelType)
+    }
+    
     /// You don't need to override it generally.
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return obj.numberOfSections()
+        return collectionViewModel.numberOfSections()
     }
     
     /// You don't need to override it generally.
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return obj.numberOfItemsInSection(section)
+        return collectionViewModel.numberOfItemsInSection(section)
     }
     
     /// You don't need to override it generally.
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(obj.cellIdentifierAtIndexPath(indexPath), forIndexPath: indexPath) as! CollectionViewCell
-        cell.obj = obj.itemAtIndexPath(indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionViewModel.cellIdentifierAtIndexPath(indexPath), forIndexPath: indexPath) as! CollectionViewCell
+        cell.obj = collectionViewModel.itemAtIndexPath(indexPath)
         return cell
     }
 }
