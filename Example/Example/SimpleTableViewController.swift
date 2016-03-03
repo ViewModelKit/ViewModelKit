@@ -11,12 +11,12 @@ import UIKit
 import ViewModelKit
 import SwiftyJSON
 
-class SimpleTableViewController: TableViewController, BridgeTypeAddition {
+class SimpleTableViewController: TableViewController, ControllerTypeAddition {
     
     typealias T = SimpleTableViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.items = students.map{JSON($0)}.map(Student.init)
+        viewModel.items = students.map{JSON($0)}.map(Student.init).map{ StudentCellModel($0) }
     }
 }

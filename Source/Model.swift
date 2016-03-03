@@ -2,64 +2,61 @@
 //  Model.swift
 //  ViewModelKit
 //
-//  Created by Tongtong Xu on 16/2/21.
+//  Created by Tongtong Xu on 16/3/3.
 //  Copyright © 2016年 Tongtong Xu. All rights reserved.
 //
 
 import Foundation
 
-// MARK: - ModelType Class
-public class ModelType {
+public class ViewModel: ModelType, AutoInitialization {
     
-    public init() { }
+    public required init() { }
 }
 
-public class TableViewModel<Element: ModelType>: TableViewModelType, TableViewModelTypeAddition {
+public class ListViewModel<Element: CellModelType>: ListViewModelType, ListViewModelTypeAddition, AutoInitialization {
+    
+    public var objs: [CellModelType] = []
     
     public typealias T = Element
     
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    public var objs: [ModelType]? = [ModelType]()
-    
-    /// You don't need to call it directly.
     public required init() { }
     
-    /// The method you must override to return cell identifier
-    ///
-    ///     return TableViewCell.reuseIdentifier
     public func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
-        return TableViewCell.reuseIdentifier
+        return ""
     }
-}
-
-public class CollectionViewModel<Element: ModelType>: CollectionViewModelType, CollectionViewModelTypeAddition {
     
-    public typealias T = Element
-
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    public var objs: [ModelType]? = [ModelType]()
+    public func numberOfSections() -> Int {
+        return 1
+    }
     
-    /// You don't need to call it directly.
-    public required init() { }
+    public func numberOfItemsInSection(section: Int) -> Int {
+        return objs.count
+    }
     
-    /// The method you must override to return cell identifier
-    ///
-    ///     return CollectionViewCell.reuseIdentifier
-    public func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
-        return CollectionViewCell.reuseIdentifier
+    public func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType {
+        return objs[indexPath.row]
     }
 }
 
 public class CellModel: CellModelType {
     
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    public var obj: ModelType?
+    public var obj: ModelType!
     
-    /// Assign obj. You don't need to override or call it generally.
-    public required init(_ x: ModelType?) {
+    public required init(_ x: ModelType) {
         obj = x
+        modelValid()
+    }
+    
+    public func modelValid() {
+        
+    }
+}
+
+public class TableViewCellModel<Element: ModelType>: CellModel, CellModelTypeAddition {
+    
+    public typealias T = Element
+    
+    public required init(_ x: ModelType) {
+       super.init(x)
     }
 }

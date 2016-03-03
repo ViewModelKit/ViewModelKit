@@ -10,21 +10,21 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class IntricateTableViewModel: TableViewModel<ModelType> {
+class IntricateTableViewModel: ListViewModel<CellModel> {
     
     required init() {
-        super.init()
     }
 
     override func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
-        if itemAtIndexPath(indexPath) is Teacher {
-            return TeacherCell.reuseIdentifier
+        if cellModelAtIndexPath(indexPath) is TeacherCellModel {
+            return "TeacherCell"
+        } else {
+            return "StudentCell"
         }
-        return StudentCell.reuseIdentifier
     }
 }
 
-class TeacherCellModel: CellModel, CellModelTypeAddition {
+class TeacherCellModel: TableViewCellModel<Teacher> {
     
     typealias T = Teacher
     
@@ -34,6 +34,10 @@ class TeacherCellModel: CellModel, CellModelTypeAddition {
     
     var age: String {
         return "\(model.age)岁"
+    }
+    
+    required init(_ x: ModelType) {
+        super.init(x)
     }
 }
 

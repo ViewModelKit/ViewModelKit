@@ -9,16 +9,12 @@
 import Foundation
 import ViewModelKit
 
-class TeacherCell: TableViewCell, TableViewCellTypeAddition {
+class TeacherCell: TableViewCell, ListViewCellTypeAddition {
     
-    override func objDidSet(obj: ModelType?) {
-        setCellModel(obj)
-    }
-    
-    var cellModel: TeacherCellModel?
-    
-    func binding() {
-        textLabel?.text = "Teacher: \(cellModel!.name)"
-        detailTextLabel?.text = cellModel?.age
+    typealias T = TeacherCellModel
+
+    override func cellModelValid() {
+        textLabel?.text = "Teacher: \(cellModel.name)"
+        detailTextLabel?.text = cellModel.age
     }
 }

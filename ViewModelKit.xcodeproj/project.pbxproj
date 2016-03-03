@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		751843C01C7BFF2C00D90AE6 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751843BF1C7BFF2C00D90AE6 /* Bridge.swift */; };
+		750705F31C8845450091D7D6 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750705F21C8845450091D7D6 /* Protocol.swift */; };
+		750705F71C8845AA0091D7D6 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750705F61C8845AA0091D7D6 /* Controller.swift */; };
+		750705F91C8845CF0091D7D6 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750705F81C8845CF0091D7D6 /* View.swift */; };
+		750705FB1C8845DF0091D7D6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750705FA1C8845DF0091D7D6 /* Model.swift */; };
 		75247B6A1C7AE76C0046FA43 /* ViewModelKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B691C7AE76C0046FA43 /* ViewModelKitTests.swift */; };
 		75247B6C1C7AE76C0046FA43 /* ViewModelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75247B311C7AE3190046FA43 /* ViewModelKit.framework */; };
-		75247B7F1C7AEEAE0046FA43 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B791C7AEEAE0046FA43 /* Model.swift */; };
-		75247B801C7AEEAE0046FA43 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B7A1C7AEEAE0046FA43 /* Protocol.swift */; };
-		75247B811C7AEEAE0046FA43 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B7B1C7AEEAE0046FA43 /* View.swift */; };
-		75247B821C7AEEAE0046FA43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B7C1C7AEEAE0046FA43 /* ViewController.swift */; };
 		75247B831C7AEEAE0046FA43 /* ViewModelKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 75247B7D1C7AEEAE0046FA43 /* ViewModelKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -28,16 +27,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		751843BF1C7BFF2C00D90AE6 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = Source/Bridge.swift; sourceTree = SOURCE_ROOT; };
+		750705F21C8845450091D7D6 /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocol.swift; path = Source/Protocol.swift; sourceTree = SOURCE_ROOT; };
+		750705F61C8845AA0091D7D6 /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Controller.swift; path = Source/Controller.swift; sourceTree = SOURCE_ROOT; };
+		750705F81C8845CF0091D7D6 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = View.swift; path = Source/View.swift; sourceTree = SOURCE_ROOT; };
+		750705FA1C8845DF0091D7D6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Source/Model.swift; sourceTree = SOURCE_ROOT; };
 		75247B311C7AE3190046FA43 /* ViewModelKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewModelKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75247B671C7AE76C0046FA43 /* ViewModelKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewModelKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75247B691C7AE76C0046FA43 /* ViewModelKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelKitTests.swift; sourceTree = "<group>"; };
 		75247B6B1C7AE76C0046FA43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75247B781C7AEEAE0046FA43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
-		75247B791C7AEEAE0046FA43 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = Source/Model.swift; sourceTree = SOURCE_ROOT; };
-		75247B7A1C7AEEAE0046FA43 /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocol.swift; path = Source/Protocol.swift; sourceTree = SOURCE_ROOT; };
-		75247B7B1C7AEEAE0046FA43 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = View.swift; path = Source/View.swift; sourceTree = SOURCE_ROOT; };
-		75247B7C1C7AEEAE0046FA43 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Source/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		75247B7D1C7AEEAE0046FA43 /* ViewModelKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewModelKit.h; path = Source/ViewModelKit.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -81,12 +79,11 @@
 		75247B331C7AE3190046FA43 /* ViewModelKit */ = {
 			isa = PBXGroup;
 			children = (
-				75247B791C7AEEAE0046FA43 /* Model.swift */,
-				75247B7A1C7AEEAE0046FA43 /* Protocol.swift */,
-				75247B7B1C7AEEAE0046FA43 /* View.swift */,
-				751843BF1C7BFF2C00D90AE6 /* Bridge.swift */,
-				75247B7C1C7AEEAE0046FA43 /* ViewController.swift */,
 				75247B7D1C7AEEAE0046FA43 /* ViewModelKit.h */,
+				750705F21C8845450091D7D6 /* Protocol.swift */,
+				750705F61C8845AA0091D7D6 /* Controller.swift */,
+				750705F81C8845CF0091D7D6 /* View.swift */,
+				750705FA1C8845DF0091D7D6 /* Model.swift */,
 				75247B781C7AEEAE0046FA43 /* Info.plist */,
 			);
 			path = ViewModelKit;
@@ -209,11 +206,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751843C01C7BFF2C00D90AE6 /* Bridge.swift in Sources */,
-				75247B7F1C7AEEAE0046FA43 /* Model.swift in Sources */,
-				75247B801C7AEEAE0046FA43 /* Protocol.swift in Sources */,
-				75247B821C7AEEAE0046FA43 /* ViewController.swift in Sources */,
-				75247B811C7AEEAE0046FA43 /* View.swift in Sources */,
+				750705FB1C8845DF0091D7D6 /* Model.swift in Sources */,
+				750705F91C8845CF0091D7D6 /* View.swift in Sources */,
+				750705F71C8845AA0091D7D6 /* Controller.swift in Sources */,
+				750705F31C8845450091D7D6 /* Protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

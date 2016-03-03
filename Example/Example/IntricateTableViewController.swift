@@ -10,13 +10,14 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class IntricateTableViewController: TableViewController, BridgeTypeAddition {
+class IntricateTableViewController: TableViewController, ControllerTypeAddition {
     
     typealias T = IntricateTableViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.items = teachers.map{ JSON($0) }.map(Teacher.init) + students.map{JSON($0)}.map(Student.init)
+        let sss = teachers.map{ JSON($0) }.map(Teacher.init).map{ TeacherCellModel($0) } + students.map{JSON($0)}.map(Student.init).map{ StudentCellModel($0) }
+        viewModel.items = sss
     }
 }

@@ -10,18 +10,17 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class SimpleTableViewModel: TableViewModel<Student> {
+class SimpleTableViewModel: ListViewModel<StudentCellModel> {
     
     required init() {
-        super.init()
     }
 
     override func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
-        return StudentCell.reuseIdentifier
+        return "StudentCell"
     }
 }
 
-class StudentCellModel: CellModel, CellModelTypeAddition {
+class StudentCellModel: TableViewCellModel<Student> {
     
     typealias T = Student
     
@@ -31,6 +30,10 @@ class StudentCellModel: CellModel, CellModelTypeAddition {
     
     var age: String {
         return "\(model.age)岁"
+    }
+    
+    required init(_ x: ModelType) {
+        super.init(x)
     }
 }
 

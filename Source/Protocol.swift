@@ -1,280 +1,202 @@
 //
 //  Protocol.swift
-//  ViewModelKit
+//  SimpleViewModel
 //
-//  Created by Tongtong Xu on 16/2/21.
+//  Created by Tongtong Xu on 16/3/3.
 //  Copyright © 2016年 Tongtong Xu. All rights reserved.
 //
 
 import Foundation
-import UIKit
 
-// MARK: - AutoInitializeType Protocol
-public protocol AutoInitializeType {
-    
-    /// auto initialize
-    /// You don't need to call it directly.
+public typealias AutoInitializeViewModelType = protocol<ModelType,AutoInitialization>
+
+///------------------------------------------------------------------------------------------------
+
+public protocol AutoInitialization {
     init()
 }
 
-// MARK: - ViewModelType Protocol
-public protocol ViewModelType: class, AutoInitializeType { }
+///------------------------------------------------------------------------------------------------
 
-// MARK: - ArrayModelType Protocol
-public protocol ArrayModelType: class, ViewModelType {
+public protocol ModelType {
     
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    var objs: [ModelType]? { get set }
+}
+
+///------------------------------------------------------------------------------------------------
+
+public protocol ListViewModelType: class, ModelType {
     
-    /// The method you must override
+    var objs: [CellModelType] { get set }
+    
+    func numberOfSections() -> Int
+    
+    func numberOfItemsInSection(section: Int) -> Int
+    
     func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String
+    
+    func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType
 }
 
-extension ArrayModelType {
+///------------------------------------------------------------------------------------------------
+
+public protocol ListViewModelTypeAddition: class {
     
-    /// default implement for func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    public func numberOfSections() -> Int {
-        return 1
-    }
+    typealias T: CellModelType
     
-    /// default implement for func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    public func numberOfItemsInSection(section: Int) -> Int {
-        return objs!.count
-    }
-    
-    /// return the item for at indexPath
-    public func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType {
-        return objs![indexPath.row]
-    }
+    var items: [T] { get set }
 }
 
-// MARK: - Addition Protocol For ArrayModelType
-public protocol ArrayModelTypeAddition: ArrayModelType {
+public extension ListViewModelTypeAddition where Self: ListViewModelType {
     
-    typealias T: ModelType
-}
-
-extension ArrayModelTypeAddition {
-    
-    /// Use it directly.
-    public var items: [T] {
+    var items: [T] {
         get {
-            return safeItems()
+            return safeObjs
         }
         set {
-            objs = newValue
+            objs = newValue.map{ $0 }
         }
     }
     
-    /// Safety initialization
-    private func safeItems() -> [T] {
-        if let models = objs {
-            return models as! [T]
-        } else {
-            items = [T]()
-            return items
+    private var safeObjs: [T] {
+        if let _objs = objs as? [T] {
+            return _objs
         }
+        objs = []
+        return self.safeObjs
     }
 }
 
-// MARK: - CellModelType Protocol
-public protocol CellModelType {
+///------------------------------------------------------------------------------------------------
+
+public protocol CellModelType: class {
     
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    var obj: ModelType? { set get }
-    
-    init(_ x: ModelType?)
+    var obj: ModelType! { get set }    
 }
 
-// MARK: - Addition Protocol For CellModelType
+///------------------------------------------------------------------------------------------------
+
 public protocol CellModelTypeAddition {
     
     typealias T: ModelType
     
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    var obj: ModelType? { get set }
+    var model: T { get }
 }
 
-extension CellModelTypeAddition {
+public extension CellModelTypeAddition where Self: CellModelType{
     
-    /// Use it directly.
-    public var model: T {
-        get {
-            return obj as! T
-        }
-        set {
-            obj = newValue
-        }
+    var model: T {
+        return obj as! T
     }
 }
 
-// MARK: - ViewControllerType Protocol
-public protocol ViewControllerType: class {
+///------------------------------------------------------------------------------------------------
+
+public protocol ControllerType: class {
     
-    typealias T: ViewModelType
-    
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    var obj: ViewModelType! { get set }
+    var obj: ModelType! { get set }
 }
 
-public extension ViewControllerType {
+///------------------------------------------------------------------------------------------------
+
+public protocol ControllerTypeAddition {
     
-    /// Use it directly.
-    public var viewModel: T {
+    typealias T: AutoInitializeViewModelType
+    
+    var viewModel: T { get set }
+}
+
+public extension ControllerTypeAddition where Self: ControllerType {
+    
+    var viewModel: T {
         get {
-            return safeViewModel()
-        }
-        set {
-            obj = newValue
-        }
-    }
-    
-    /// Safety initialization
-    private func safeViewModel() -> T {
-        if let safeViewModel = obj {
-            return safeViewModel as! T
-        } else {
-            viewModel = T()
-            return viewModel
-        }
-    }
-}
-
-// MARK: - ListViewControllerType Protocol
-public protocol ListViewControllerType: class {
-    typealias T: ListViewModelType
-    
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    var obj: ListViewModelType! { get set }
-}
-
-extension ListViewControllerType {
-    /// Use it directly.
-    public var viewModel: T {
-        get {
-            return safeViewModel()
+            return safeObj
         }
         set {
             obj = newValue
         }
     }
     
-    private func safeViewModel() -> T {
-        if let safeViewModel = obj {
-            return safeViewModel as! T
-        } else {
-            viewModel = T()
-            return viewModel
+    private var safeObj: T {
+        if let _obj = obj as? T {
+            return _obj
+        }
+        obj = T()
+        return self.safeObj
+    }
+}
+
+///------------------------------------------------------------------------------------------------
+
+public protocol ListControllerType {
+    
+    var _obj: ListViewModelType! { get set }
+}
+
+public extension ListControllerType where Self: ControllerType {
+    
+    var _obj: ListViewModelType! {
+        get {
+            return _safeObj
+        }
+        set {
+            obj = newValue
         }
     }
-}
-
-// MARK: - ListViewCellType Protocol
-public protocol ListViewCellType: ClassIdentifier, CellSizeType {
     
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    var obj: ModelType? { get set }
-    
-    /// override
-    func objDidSet(obj: ModelType?)
-}
-
-// MARK: - Addition Protocol For ListViewCellType
-public protocol ListViewCellTypeAddition: class {
-    
-    typealias T: CellModel
-    
-    /// It's bridge variable, you'd better not use it directly.
-    /// But you can use it in your "Addition" protocol to design your property.
-    var obj: ModelType? { get set }
-    
-    /// Use it directly.
-    var cellModel: T? { get set }
-    
-    /// Override it to bind data
-    func binding()
-}
-
-extension ListViewCellTypeAddition {
-    
-    public func setCellModel(o: ModelType?) {
-        
-        cellModel = T(o)
-        
-        binding()
+    private var _safeObj: ListViewModelType {
+        if let __obj = obj as? ListViewModelType {
+            return __obj
+        }
+        return ListViewModelPlaceholder()
     }
 }
 
-// MARK: - CellSizeType Protocol
-public protocol CellSizeType: class { }
+///------------------------------------------------------------------------------------------------
 
-extension CellSizeType {
+public protocol ListViewCellType: class {
     
-    public var height: Float {
+    var obj: CellModelType! { get set }
+    
+    func bindingCellModel(cellModel: CellModelType)
+}
+
+///------------------------------------------------------------------------------------------------
+
+public protocol ListViewCellTypeAddition {
+    
+    typealias T: CellModelType
+    
+    var cellModel: T { get }
+}
+
+public extension ListViewCellTypeAddition where Self: ListViewCellType {
+    
+    var cellModel: T {
+        return obj as! T
+    }
+}
+
+///------------------------------------------------------------------------------------------------
+
+private class ListViewModelPlaceholder: ListViewModelType {
+    
+    var objs: [CellModelType] = []
+
+    required init() { }
+    
+    func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
+        return ""
+    }
+    
+    func numberOfSections() -> Int {
         return 0
     }
     
-    public var size: CGSize {
-        return CGSizeZero
+    func numberOfItemsInSection(section: Int) -> Int {
+        return objs.count
     }
-}
-
-// MARK: - Class Identifier
-public protocol ClassIdentifier: class { }
-
-extension ClassIdentifier {
     
-    public static var reuseIdentifier: String {
-        
-        return NSStringFromClass(self).className()
+    func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType {
+        return objs[indexPath.row]
     }
 }
-
-extension String {
-    
-    func className() -> String {
-        
-        return componentsSeparatedByString(".").last ?? self
-    }
-}
-
-// MARK: - TableViewControllerType Protocol
-public typealias TableViewControllerType = ListViewControllerType
-
-// MARK: - CollectionViewControllerType Protocol
-public typealias CollectionViewControllerType = ListViewControllerType
-
-// MARK: - ListViewModelType Protocol
-public typealias ListViewModelType = ArrayModelType
-
-// MARK: - Addition Protocol For ListViewModelType
-public typealias ListViewModelTypeAddition = ArrayModelTypeAddition
-
-// MARK: - TableViewModelType Protocol
-public typealias TableViewModelType = ListViewModelType
-// MARK: - CollectionViewModelType Protocol
-public typealias CollectionViewModelType = ListViewModelType
-
-// MARK: - Addition Protocol For TableViewModelType
-public typealias TableViewModelTypeAddition = ListViewModelTypeAddition
-
-// MARK: - Addition Protocol For CollectionViewModelType
-public typealias CollectionViewModelTypeAddition = ListViewModelTypeAddition
-
-// MARK: - TableViewCellType Protocol
-public typealias TableViewCellType = ListViewCellType
-
-// MARK: - Addition Protocol For TableViewCellType
-public typealias TableViewCellTypeAddition = ListViewCellTypeAddition
-
-// MARK: - CollectionViewCellType Protocol
-public typealias CollectionViewCellType = ListViewCellType
-
-// MARK: - Addition Protocol For CollectionViewCellType
-public typealias CollectionViewCellTypeAddition = ListViewCellTypeAddition
