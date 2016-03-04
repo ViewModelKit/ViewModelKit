@@ -10,5 +10,5 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class Model: ModelType {
+class Model: BaseModelType {
 }

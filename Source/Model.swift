@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class ViewModel: ModelType, AutoInitialization {
+public class ViewModel: BaseModelType, BaseAutoInitialization {
     
     public required init() { }
 }
 
-public class ListViewModel<Model: ModelType>: ListViewModelType, ListViewModelTypeAddition, AutoInitialization {
+public class ListViewModel<Model: BaseModelType>: BaseListViewModelType, BaseListViewModelTypeAddition, BaseAutoInitialization {
     
-    public var objs: [ModelType] = []
+    public var objs: [BaseModelType] = []
     
     public typealias T = Model
     
@@ -29,20 +29,20 @@ public class ListViewModel<Model: ModelType>: ListViewModelType, ListViewModelTy
         return objs.count
     }
     
-    public func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType {
+    public func itemAtIndexPath(indexPath: NSIndexPath) -> BaseModelType {
         return objs[indexPath.row]
     }
     
-    public func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellModelType: CellModelType.Type?) {
+    public func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: BaseClassIdentifier.Type?, BaseCellModelType: BaseCellModelType.Type?) {
         return (nil, nil)
     }
 }
 
-public class CellModel: CellModelType {
+public class CellModel: BaseCellModelType {
     
-    public var obj: ModelType!
+    public var obj: BaseModelType!
     
-    public required init(_ x: ModelType) {
+    public required init(_ x: BaseModelType) {
         obj = x
         modelValid()
     }
@@ -52,11 +52,11 @@ public class CellModel: CellModelType {
     }
 }
 
-public class ListViewCellModel<Element: ModelType>: CellModel, CellModelTypeAddition {
+public class ListViewCellModel<Element: BaseModelType>: CellModel, BaseCellModelTypeAddition {
     
     public typealias T = Element
     
-    public required init(_ x: ModelType) {
+    public required init(_ x: BaseModelType) {
         
        super.init(x)
         

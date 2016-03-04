@@ -15,7 +15,7 @@ class IntricateTableViewModel: ListViewModel<Model> {
     required init() {
     }
 
-    override func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellType: CellModelType.Type?) {
+    override func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: BaseClassIdentifier.Type?, cellType: BaseCellModelType.Type?) {
         if itemAtIndexPath(indexPath) is Teacher {
             return (TeacherCell.self, TeacherCellModel.self)
         } else {
@@ -34,7 +34,7 @@ class TeacherCellModel: ListViewCellModel<Teacher> {
         return "\(model.age)岁"
     }
     
-    required init(_ x: ModelType) {
+    required init(_ x: BaseModelType) {
         super.init(x)        
     }
 }

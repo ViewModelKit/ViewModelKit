@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class ViewController: UIViewController, ControllerType {
-    public var obj: ViewModelType!
+public class ViewController: UIViewController, BaseControllerType {
+    public var obj: BaseViewModelType!
 }
 
-public class TableViewController: ViewController, ListControllerType, UITableViewDataSource, UITableViewDelegate {
+public class TableViewController: ViewController, BaseListControllerType, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,14 +33,14 @@ public class TableViewController: ViewController, ListControllerType, UITableVie
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellInfo = _obj.cellInfoAtIndexPath(indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellInfo.cellType?.reuseIdentifier ?? "", forIndexPath: indexPath)
-        if let _cell = cell as? ListViewCellType, let cellModelType = cellInfo.cellModelType{
-            _cell.bindingCellModel(cellModelType.init(_obj.itemAtIndexPath(indexPath)))
+        if let _cell = cell as? BaseListViewCellType, let BaseCellModelType = cellInfo.BaseCellModelType{
+            _cell.bindingCellModel(BaseCellModelType.init(_obj.itemAtIndexPath(indexPath)))
         }
         return cell
     }
 }
 
-public class CollectionViewController: ViewController, ListControllerType, UICollectionViewDataSource, UICollectionViewDelegate {
+public class CollectionViewController: ViewController, BaseListControllerType, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -61,8 +61,8 @@ public class CollectionViewController: ViewController, ListControllerType, UICol
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cellInfo = _obj.cellInfoAtIndexPath(indexPath)
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellInfo.cellType?.reuseIdentifier ?? "", forIndexPath: indexPath)
-        if let _cell = cell as? ListViewCellType, let cellModelType = cellInfo.cellModelType{
-            _cell.bindingCellModel(cellModelType.init(_obj.itemAtIndexPath(indexPath)))
+        if let _cell = cell as? BaseListViewCellType, let BaseCellModelType = cellInfo.BaseCellModelType{
+            _cell.bindingCellModel(BaseCellModelType.init(_obj.itemAtIndexPath(indexPath)))
         }
         return cell
     }

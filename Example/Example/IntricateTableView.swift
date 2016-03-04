@@ -9,7 +9,7 @@
 import Foundation
 import ViewModelKit
 
-class TeacherCell: TableViewCell, ListViewCellTypeAddition {
+class TeacherCell: TableViewCell, BaseListViewCellTypeAddition {
     
     typealias T = TeacherCellModel
 

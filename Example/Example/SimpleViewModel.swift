@@ -9,7 +9,7 @@
 import Foundation
 import ViewModelKit
 
-class SimpleViewModel: AutoInitializeViewModelType {
+class SimpleViewModel: BaseAutoInitializeViewModelType {
     
     let nameTitle: String
     

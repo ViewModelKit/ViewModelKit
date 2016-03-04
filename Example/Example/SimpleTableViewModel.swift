@@ -16,7 +16,7 @@ class SimpleTableViewModel: ListViewModel<Student> {
         
     }
     
-    override func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellType: CellModelType.Type?) {
+    override func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: BaseClassIdentifier.Type?, cellType: BaseCellModelType.Type?) {
         return (StudentCell.self,StudentCellModel.self)
     }
 }
@@ -31,7 +31,7 @@ class StudentCellModel: ListViewCellModel<Student> {
         return "\(model.age)岁"
     }
     
-    required init(_ x: ModelType) {
+    required init(_ x: BaseModelType) {
         super.init(x)
     }
 }

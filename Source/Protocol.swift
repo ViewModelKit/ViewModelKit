@@ -10,49 +10,49 @@ import Foundation
 
 ///------------------------------------------------------------------------------------------------
 
-public typealias AutoInitializeViewModelType = protocol<ViewModelType,AutoInitialization>
+public typealias BaseAutoInitializeViewModelType = protocol<BaseViewModelType,BaseAutoInitialization>
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol AutoInitialization {
+public protocol BaseAutoInitialization {
     init()
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ModelType {
+public protocol BaseModelType {
     
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ViewModelType {
+public protocol BaseViewModelType {
     
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ListViewModelType: class, ViewModelType {
+public protocol BaseListViewModelType: class, BaseViewModelType {
     
-    var objs: [ModelType] { get set }
+    var objs: [BaseModelType] { get set }
     
     func numberOfSections() -> Int
     
     func numberOfItemsInSection(section: Int) -> Int
     
-    func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType
+    func itemAtIndexPath(indexPath: NSIndexPath) -> BaseModelType
     
-    func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellModelType: CellModelType.Type?)
+    func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: BaseClassIdentifier.Type?, BaseCellModelType: BaseCellModelType.Type?)
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ListViewModelTypeAddition: class {
+public protocol BaseListViewModelTypeAddition: class {
     
-    typealias T: ModelType
+    typealias T: BaseModelType
 }
 
-public extension ListViewModelTypeAddition where Self: ListViewModelType {
+public extension BaseListViewModelTypeAddition where Self: BaseListViewModelType {
     
     var items: [T] {
         get {
@@ -74,21 +74,21 @@ public extension ListViewModelTypeAddition where Self: ListViewModelType {
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol CellModelType: class {
+public protocol BaseCellModelType: class {
     
-    var obj: ModelType! { get set }
+    var obj: BaseModelType! { get set }
     
-    init(_ x: ModelType)
+    init(_ x: BaseModelType)
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol CellModelTypeAddition {
+public protocol BaseCellModelTypeAddition {
     
-    typealias T: ModelType
+    typealias T: BaseModelType
 }
 
-public extension CellModelTypeAddition where Self: CellModelType{
+public extension BaseCellModelTypeAddition where Self: BaseCellModelType{
     
     var model: T {
         return obj as! T
@@ -97,19 +97,19 @@ public extension CellModelTypeAddition where Self: CellModelType{
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ControllerType: class {
+public protocol BaseControllerType: class {
     
-    var obj: ViewModelType! { get set }
+    var obj: BaseViewModelType! { get set }
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ControllerTypeAddition: class {
+public protocol BaseControllerTypeAddition: class {
     
-    typealias T: AutoInitializeViewModelType
+    typealias T: BaseAutoInitializeViewModelType
 }
 
-public extension ControllerTypeAddition where Self: ControllerType {
+public extension BaseControllerTypeAddition where Self: BaseControllerType {
     
     var viewModel: T {
         get {
@@ -131,14 +131,14 @@ public extension ControllerTypeAddition where Self: ControllerType {
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ListControllerType {
+public protocol BaseListControllerType {
     
-    var _obj: ListViewModelType! { get set }
+    var _obj: BaseListViewModelType! { get set }
 }
 
-public extension ListControllerType where Self: ControllerType {
+public extension BaseListControllerType where Self: BaseControllerType {
     
-    var _obj: ListViewModelType! {
+    var _obj: BaseListViewModelType! {
         get {
             return _safeObj
         }
@@ -147,8 +147,8 @@ public extension ListControllerType where Self: ControllerType {
         }
     }
     
-    private var _safeObj: ListViewModelType {
-        if let __obj = obj as? ListViewModelType {
+    private var _safeObj: BaseListViewModelType {
+        if let __obj = obj as? BaseListViewModelType {
             return __obj
         }
         return ListViewModelPlaceholder()
@@ -157,21 +157,21 @@ public extension ListControllerType where Self: ControllerType {
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ListViewCellType: class {
+public protocol BaseListViewCellType: class {
     
-    var obj: CellModelType! { get set }
+    var obj: BaseCellModelType! { get set }
     
-    func bindingCellModel(cellModel: CellModelType)
+    func bindingCellModel(cellModel: BaseCellModelType)
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ListViewCellTypeAddition {
+public protocol BaseListViewCellTypeAddition {
     
-    typealias T: CellModelType
+    typealias T: BaseCellModelType
 }
 
-public extension ListViewCellTypeAddition where Self: ListViewCellType {
+public extension BaseListViewCellTypeAddition where Self: BaseListViewCellType {
     
     var cellModel: T {
         return obj as! T
@@ -180,9 +180,9 @@ public extension ListViewCellTypeAddition where Self: ListViewCellType {
 
 ///------------------------------------------------------------------------------------------------
 
-private class ListViewModelPlaceholder: ListViewModelType {
+private class ListViewModelPlaceholder: BaseListViewModelType {
     
-    var objs: [ModelType] = []
+    var objs: [BaseModelType] = []
     
     required init() { }
     
@@ -198,23 +198,23 @@ private class ListViewModelPlaceholder: ListViewModelType {
         return objs.count
     }
     
-    func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType {
+    func itemAtIndexPath(indexPath: NSIndexPath) -> BaseModelType {
         return objs[indexPath.row]
     }
     
-    func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellModelType: CellModelType.Type?) {
+    func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: BaseClassIdentifier.Type?, BaseCellModelType: BaseCellModelType.Type?) {
         return (nil, nil)
     }
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ClassIdentifier: class {
+public protocol BaseClassIdentifier: class {
     
     static var reuseIdentifier: String { get }
 }
 
-extension ClassIdentifier {
+extension BaseClassIdentifier {
     
     public static var reuseIdentifier: String {
         

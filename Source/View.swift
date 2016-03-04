@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class TableViewCell: UITableViewCell, ListViewCellType, ClassIdentifier {
+public class TableViewCell: UITableViewCell, BaseListViewCellType, BaseClassIdentifier {
     
-    public var obj: CellModelType!
+    public var obj: BaseCellModelType!
     
-    public func bindingCellModel(cellModel: CellModelType) {
+    public func bindingCellModel(cellModel: BaseCellModelType) {
         obj = cellModel
         cellModelValid()
     }
@@ -22,11 +22,11 @@ public class TableViewCell: UITableViewCell, ListViewCellType, ClassIdentifier {
     }
 }
 
-public class CollectionViewCell: UICollectionViewCell, ListViewCellType, ClassIdentifier {
+public class CollectionViewCell: UICollectionViewCell, BaseListViewCellType, BaseClassIdentifier {
     
-    public var obj: CellModelType!
+    public var obj: BaseCellModelType!
     
-    public func bindingCellModel(cellModel: CellModelType) {
+    public func bindingCellModel(cellModel: BaseCellModelType) {
         obj = cellModel
         cellModelValid()
     }

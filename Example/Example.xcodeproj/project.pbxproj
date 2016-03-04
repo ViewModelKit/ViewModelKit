@@ -95,7 +95,6 @@
 		75247B901C7AEFB00046FA43 /* SimpleViewController */ = {
 			isa = PBXGroup;
 			children = (
-				75247B841C7AEF960046FA43 /* SimpleViewController.swift */,
 				75247B851C7AEF960046FA43 /* SimpleViewModel.swift */,
 			);
 			name = SimpleViewController;
@@ -117,6 +116,7 @@
 			children = (
 				75247B961C7B08E20046FA43 /* IntricateTableViewController.swift */,
 				75247B981C7B08FE0046FA43 /* IntricateTableView.swift */,
+				75247B841C7AEF960046FA43 /* SimpleViewController.swift */,
 				75247B9A1C7B09060046FA43 /* IntricateTableViewModel.swift */,
 			);
 			name = MultipleCellTypeListView;

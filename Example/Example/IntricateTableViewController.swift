@@ -10,7 +10,7 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class IntricateTableViewController: TableViewController, ControllerTypeAddition {
+class IntricateTableViewController: TableViewController, BaseControllerTypeAddition {
     
     typealias T = IntricateTableViewModel
     
