@@ -13,11 +13,11 @@ public class ViewModel: ModelType, AutoInitialization {
     public required init() { }
 }
 
-public class ListViewModel<Element: CellModelType>: ListViewModelType, ListViewModelTypeAddition, AutoInitialization {
+public class ListViewModel<Model: ModelType>: ListViewModelType, ListViewModelTypeAddition, AutoInitialization {
     
-    public var objs: [CellModelType] = []
+    public var objs: [ModelType] = []
     
-    public typealias T = Element
+    public typealias T = Model
     
     public required init() { }
     
@@ -33,8 +33,12 @@ public class ListViewModel<Element: CellModelType>: ListViewModelType, ListViewM
         return objs.count
     }
     
-    public func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType {
+    public func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType {
         return objs[indexPath.row]
+    }
+    
+    public func cellModelTypeAtIndexPath(indexPath: NSIndexPath) -> CellModelType.Type? {
+        return nil
     }
 }
 

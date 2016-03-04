@@ -8,7 +8,9 @@
 
 import Foundation
 
-public typealias AutoInitializeViewModelType = protocol<ModelType,AutoInitialization>
+///------------------------------------------------------------------------------------------------
+
+public typealias AutoInitializeViewModelType = protocol<ViewModelType,AutoInitialization>
 
 ///------------------------------------------------------------------------------------------------
 
@@ -24,9 +26,15 @@ public protocol ModelType {
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ListViewModelType: class, ModelType {
+public protocol ViewModelType {
     
-    var objs: [CellModelType] { get set }
+}
+
+///------------------------------------------------------------------------------------------------
+
+public protocol ListViewModelType: class, ViewModelType {
+    
+    var objs: [ModelType] { get set }
     
     func numberOfSections() -> Int
     
@@ -34,16 +42,28 @@ public protocol ListViewModelType: class, ModelType {
     
     func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String
     
-    func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType
+    func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType
+    
+    func cellModelTypeAtIndexPath(indexPath: NSIndexPath) -> CellModelType.Type?
+    
+    func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType?
+}
+
+extension ListViewModelType {
+    
+    public func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType? {
+        if let type = cellModelTypeAtIndexPath(indexPath) {
+            return type.init(itemAtIndexPath(indexPath))
+        }
+        return nil
+    }
 }
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ListViewModelTypeAddition: class {
+public protocol ListViewModelTypeAddition {
     
-    typealias T: CellModelType
-    
-    var items: [T] { get set }
+    typealias T: ModelType
 }
 
 public extension ListViewModelTypeAddition where Self: ListViewModelType {
@@ -70,7 +90,9 @@ public extension ListViewModelTypeAddition where Self: ListViewModelType {
 
 public protocol CellModelType: class {
     
-    var obj: ModelType! { get set }    
+    var obj: ModelType! { get set }
+    
+    init(_ x: ModelType)
 }
 
 ///------------------------------------------------------------------------------------------------
@@ -78,8 +100,6 @@ public protocol CellModelType: class {
 public protocol CellModelTypeAddition {
     
     typealias T: ModelType
-    
-    var model: T { get }
 }
 
 public extension CellModelTypeAddition where Self: CellModelType{
@@ -93,7 +113,7 @@ public extension CellModelTypeAddition where Self: CellModelType{
 
 public protocol ControllerType: class {
     
-    var obj: ModelType! { get set }
+    var obj: ViewModelType! { get set }
 }
 
 ///------------------------------------------------------------------------------------------------
@@ -101,8 +121,6 @@ public protocol ControllerType: class {
 public protocol ControllerTypeAddition {
     
     typealias T: AutoInitializeViewModelType
-    
-    var viewModel: T { get set }
 }
 
 public extension ControllerTypeAddition where Self: ControllerType {
@@ -165,8 +183,6 @@ public protocol ListViewCellType: class {
 public protocol ListViewCellTypeAddition {
     
     typealias T: CellModelType
-    
-    var cellModel: T { get }
 }
 
 public extension ListViewCellTypeAddition where Self: ListViewCellType {
@@ -180,8 +196,8 @@ public extension ListViewCellTypeAddition where Self: ListViewCellType {
 
 private class ListViewModelPlaceholder: ListViewModelType {
     
-    var objs: [CellModelType] = []
-
+    var objs: [ModelType] = []
+    
     required init() { }
     
     func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
@@ -196,7 +212,26 @@ private class ListViewModelPlaceholder: ListViewModelType {
         return objs.count
     }
     
-    func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType {
+    func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType {
         return objs[indexPath.row]
+    }
+    
+    func cellModelTypeAtIndexPath(indexPath: NSIndexPath) -> CellModelType.Type? {
+        return nil
+    }
+}
+
+///------------------------------------------------------------------------------------------------
+
+public protocol ClassIdentifier: class {
+    
+    static var reuseIdentifier: String { get }
+}
+
+extension ClassIdentifier {
+    
+    public static var reuseIdentifier: String {
+        
+        return String(self)
     }
 }

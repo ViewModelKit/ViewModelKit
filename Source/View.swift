@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TableViewCell: UITableViewCell, ListViewCellType {
+public class TableViewCell: UITableViewCell, ListViewCellType, ClassIdentifier {
     
     public var obj: CellModelType!
     

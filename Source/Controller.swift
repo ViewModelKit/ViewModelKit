@@ -9,7 +9,7 @@
 import Foundation
 
 public class ViewController: UIViewController, ControllerType {
-    public var obj: ModelType!
+    public var obj: ViewModelType!
 }
 
 public class TableViewController: ViewController, ListControllerType, UITableViewDataSource {
@@ -26,8 +26,8 @@ public class TableViewController: ViewController, ListControllerType, UITableVie
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(_obj.cellIdentifierAtIndexPath(indexPath), forIndexPath: indexPath)
-        if let _cell = cell as? ListViewCellType {
-            _cell.bindingCellModel(_obj.cellModelAtIndexPath(indexPath))
+        if let _cell = cell as? ListViewCellType, let _cellModel = _obj.cellModelAtIndexPath(indexPath) {
+            _cell.bindingCellModel(_cellModel)
         }
         return cell
     }
