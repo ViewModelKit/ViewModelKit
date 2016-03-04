@@ -47,7 +47,7 @@ public protocol ListViewModelType: class, ViewModelType {
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ListViewModelTypeAddition {
+public protocol ListViewModelTypeAddition: class {
     
     typealias T: ModelType
 }

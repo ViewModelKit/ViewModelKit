@@ -24,7 +24,7 @@ class IntricateTableViewModel: ListViewModel<Model> {
     }
 }
 
-class TeacherCellModel: TableViewCellModel<Teacher> {
+class TeacherCellModel: ListViewCellModel<Teacher> {
         
     var name: String {
         return model.name

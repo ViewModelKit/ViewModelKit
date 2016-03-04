@@ -21,7 +21,7 @@ class SimpleTableViewModel: ListViewModel<Student> {
     }
 }
 
-class StudentCellModel: TableViewCellModel<Student> {
+class StudentCellModel: ListViewCellModel<Student> {
     
     var name: String {
         return model.name

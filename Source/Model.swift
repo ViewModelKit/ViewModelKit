@@ -52,7 +52,7 @@ public class CellModel: CellModelType {
     }
 }
 
-public class TableViewCellModel<Element: ModelType>: CellModel, CellModelTypeAddition {
+public class ListViewCellModel<Element: ModelType>: CellModel, CellModelTypeAddition {
     
     public typealias T = Element
     
