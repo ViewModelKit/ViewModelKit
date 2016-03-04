@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ViewModelKit
 
-class SimpleViewController: ViewController, BaseControllerTypeAddition {
+class SimpleViewController: BaseViewController, BaseControllerTypeAddition {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!

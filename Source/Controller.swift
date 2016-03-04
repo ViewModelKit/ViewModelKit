@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class ViewController: UIViewController, BaseControllerType {
+public class BaseViewController: UIViewController, BaseControllerType {
     public var obj: BaseViewModelType!
 }
 
-public class TableViewController: ViewController, BaseListControllerType, UITableViewDataSource, UITableViewDelegate {
+public class BaseTableViewController: BaseViewController, BaseListControllerType, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -40,7 +40,7 @@ public class TableViewController: ViewController, BaseListControllerType, UITabl
     }
 }
 
-public class CollectionViewController: ViewController, BaseListControllerType, UICollectionViewDataSource, UICollectionViewDelegate {
+public class BaseCollectionViewController: BaseViewController, BaseListControllerType, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     

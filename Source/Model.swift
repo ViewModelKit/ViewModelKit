@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class ViewModel: BaseModelType, BaseAutoInitialization {
+public class BaseViewModel: BaseModelType, BaseAutoInitialization {
     
     public required init() { }
 }
 
-public class ListViewModel<Model: BaseModelType>: BaseListViewModelType, BaseListViewModelTypeAddition, BaseAutoInitialization {
+public class BaseListViewModel<Model: BaseModelType>: BaseListViewModelType, BaseListViewModelTypeAddition, BaseAutoInitialization {
     
     public var objs: [BaseModelType] = []
     
@@ -38,7 +38,7 @@ public class ListViewModel<Model: BaseModelType>: BaseListViewModelType, BaseLis
     }
 }
 
-public class CellModel: BaseCellModelType {
+public class BaseCellModel: BaseCellModelType {
     
     public var obj: BaseModelType!
     
@@ -52,7 +52,7 @@ public class CellModel: BaseCellModelType {
     }
 }
 
-public class ListViewCellModel<Element: BaseModelType>: CellModel, BaseCellModelTypeAddition {
+public class BaseListViewCellModel<Element: BaseModelType>: BaseCellModel, BaseCellModelTypeAddition {
     
     public typealias T = Element
     

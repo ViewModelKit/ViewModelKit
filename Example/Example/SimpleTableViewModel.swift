@@ -10,7 +10,7 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class SimpleTableViewModel: ListViewModel<Student> {
+class SimpleTableViewModel: BaseListViewModel<Student> {
     
     required init() {
         
@@ -21,7 +21,7 @@ class SimpleTableViewModel: ListViewModel<Student> {
     }
 }
 
-class StudentCellModel: ListViewCellModel<Student> {
+class StudentCellModel: BaseListViewCellModel<Student> {
     
     var name: String {
         return model.name

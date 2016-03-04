@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TableViewCell: UITableViewCell, BaseListViewCellType, BaseClassIdentifier {
+public class BaseTableViewCell: UITableViewCell, BaseListViewCellType, BaseClassIdentifier {
     
     public var obj: BaseCellModelType!
     
@@ -22,7 +22,7 @@ public class TableViewCell: UITableViewCell, BaseListViewCellType, BaseClassIden
     }
 }
 
-public class CollectionViewCell: UICollectionViewCell, BaseListViewCellType, BaseClassIdentifier {
+public class BaseCollectionViewCell: UICollectionViewCell, BaseListViewCellType, BaseClassIdentifier {
     
     public var obj: BaseCellModelType!
     

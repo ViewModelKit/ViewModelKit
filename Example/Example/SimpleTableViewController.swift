@@ -11,7 +11,7 @@ import UIKit
 import ViewModelKit
 import SwiftyJSON
 
-class SimpleTableViewController: TableViewController, BaseControllerTypeAddition {
+class SimpleTableViewController: BaseTableViewController, BaseControllerTypeAddition {
     
     typealias T = SimpleTableViewModel
     
