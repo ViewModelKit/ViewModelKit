@@ -10,24 +10,22 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class IntricateTableViewModel: ListViewModel<CellModel> {
+class IntricateTableViewModel: ListViewModel<Model> {
     
     required init() {
     }
 
-    override func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
-        if cellModelAtIndexPath(indexPath) is TeacherCellModel {
-            return "TeacherCell"
+    override func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellType: CellModelType.Type?) {
+        if itemAtIndexPath(indexPath) is Teacher {
+            return (TeacherCell.self, TeacherCellModel.self)
         } else {
-            return "StudentCell"
+            return (StudentCell.self,StudentCellModel.self)
         }
     }
 }
 
 class TeacherCellModel: TableViewCellModel<Teacher> {
-    
-    typealias T = Teacher
-    
+        
     var name: String {
         return model.name
     }
@@ -41,7 +39,7 @@ class TeacherCellModel: TableViewCellModel<Teacher> {
     }
 }
 
-class Teacher: ModelType {
+class Teacher: Model {
     let name: String
     let age: Int
     init(_ x: JSON) {

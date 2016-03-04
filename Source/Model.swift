@@ -21,10 +21,6 @@ public class ListViewModel<Model: ModelType>: ListViewModelType, ListViewModelTy
     
     public required init() { }
     
-    public func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
-        return ""
-    }
-    
     public func numberOfSections() -> Int {
         return 1
     }
@@ -37,8 +33,8 @@ public class ListViewModel<Model: ModelType>: ListViewModelType, ListViewModelTy
         return objs[indexPath.row]
     }
     
-    public func cellModelTypeAtIndexPath(indexPath: NSIndexPath) -> CellModelType.Type? {
-        return nil
+    public func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellModelType: CellModelType.Type?) {
+        return (nil, nil)
     }
 }
 

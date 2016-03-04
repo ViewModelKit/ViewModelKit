@@ -10,19 +10,18 @@ import Foundation
 import ViewModelKit
 import SwiftyJSON
 
-class SimpleTableViewModel: ListViewModel<StudentCellModel> {
+class SimpleTableViewModel: ListViewModel<Student> {
     
     required init() {
+        
     }
-
-    override func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
-        return "StudentCell"
+    
+    override func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellType: CellModelType.Type?) {
+        return (StudentCell.self,StudentCellModel.self)
     }
 }
 
 class StudentCellModel: TableViewCellModel<Student> {
-    
-    typealias T = Student
     
     var name: String {
         return model.name
@@ -37,7 +36,7 @@ class StudentCellModel: TableViewCellModel<Student> {
     }
 }
 
-class Student: ModelType {
+class Student: Model {
     let name: String
     let age: Int
     init(_ x: JSON) {

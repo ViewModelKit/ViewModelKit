@@ -12,9 +12,15 @@ public class ViewController: UIViewController, ControllerType {
     public var obj: ViewModelType!
 }
 
-public class TableViewController: ViewController, ListControllerType, UITableViewDataSource {
+public class TableViewController: ViewController, ListControllerType, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView?.dataSource = self
+        tableView?.delegate = self
+    }
     
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return _obj.numberOfSections()
@@ -25,9 +31,38 @@ public class TableViewController: ViewController, ListControllerType, UITableVie
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(_obj.cellIdentifierAtIndexPath(indexPath), forIndexPath: indexPath)
-        if let _cell = cell as? ListViewCellType, let _cellModel = _obj.cellModelAtIndexPath(indexPath) {
-            _cell.bindingCellModel(_cellModel)
+        let cellInfo = _obj.cellInfoAtIndexPath(indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellInfo.cellType?.reuseIdentifier ?? "", forIndexPath: indexPath)
+        if let _cell = cell as? ListViewCellType, let cellModelType = cellInfo.cellModelType{
+            _cell.bindingCellModel(cellModelType.init(_obj.itemAtIndexPath(indexPath)))
+        }
+        return cell
+    }
+}
+
+public class CollectionViewController: ViewController, ListControllerType, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView?.dataSource = self
+        collectionView?.delegate = self
+    }
+    
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return _obj.numberOfItemsInSection(section)
+    }
+    
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return _obj.numberOfSections()
+    }
+    
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cellInfo = _obj.cellInfoAtIndexPath(indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellInfo.cellType?.reuseIdentifier ?? "", forIndexPath: indexPath)
+        if let _cell = cell as? ListViewCellType, let cellModelType = cellInfo.cellModelType{
+            _cell.bindingCellModel(cellModelType.init(_obj.itemAtIndexPath(indexPath)))
         }
         return cell
     }

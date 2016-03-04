@@ -21,3 +21,17 @@ public class TableViewCell: UITableViewCell, ListViewCellType, ClassIdentifier {
         
     }
 }
+
+public class CollectionViewCell: UICollectionViewCell, ListViewCellType, ClassIdentifier {
+    
+    public var obj: CellModelType!
+    
+    public func bindingCellModel(cellModel: CellModelType) {
+        obj = cellModel
+        cellModelValid()
+    }
+    
+    public func cellModelValid() {
+        
+    }
+}

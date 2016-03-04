@@ -37,26 +37,11 @@ public protocol ListViewModelType: class, ViewModelType {
     var objs: [ModelType] { get set }
     
     func numberOfSections() -> Int
-    
     func numberOfItemsInSection(section: Int) -> Int
-    
-    func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String
-    
     func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType
     
-    func cellModelTypeAtIndexPath(indexPath: NSIndexPath) -> CellModelType.Type?
-    
-    func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType?
-}
-
-extension ListViewModelType {
-    
-    public func cellModelAtIndexPath(indexPath: NSIndexPath) -> CellModelType? {
-        if let type = cellModelTypeAtIndexPath(indexPath) {
-            return type.init(itemAtIndexPath(indexPath))
-        }
-        return nil
-    }
+    func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellModelType: CellModelType.Type?)
+//    func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellIdentifier: String, cellType: CellModelType.Type?)
 }
 
 ///------------------------------------------------------------------------------------------------
@@ -118,7 +103,7 @@ public protocol ControllerType: class {
 
 ///------------------------------------------------------------------------------------------------
 
-public protocol ControllerTypeAddition {
+public protocol ControllerTypeAddition: class {
     
     typealias T: AutoInitializeViewModelType
 }
@@ -216,8 +201,8 @@ private class ListViewModelPlaceholder: ListViewModelType {
         return objs[indexPath.row]
     }
     
-    func cellModelTypeAtIndexPath(indexPath: NSIndexPath) -> CellModelType.Type? {
-        return nil
+    func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellModelType: CellModelType.Type?) {
+        return (nil, nil)
     }
 }
 

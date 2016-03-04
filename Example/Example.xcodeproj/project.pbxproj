@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7034EE3508E440C80387CF33 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DE9F2EB12B37123093CBF8 /* Pods_Example.framework */; };
+		750705FE1C8927420091D7D6 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750705FD1C8927420091D7D6 /* Base.swift */; };
 		75247B521C7AE6F20046FA43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75247B511C7AE6F20046FA43 /* AppDelegate.swift */; };
 		75247B571C7AE6F20046FA43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75247B551C7AE6F20046FA43 /* Main.storyboard */; };
 		75247B591C7AE6F20046FA43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75247B581C7AE6F20046FA43 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		750705FD1C8927420091D7D6 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		75247B4E1C7AE6F20046FA43 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75247B511C7AE6F20046FA43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75247B561C7AE6F20046FA43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				75247B511C7AE6F20046FA43 /* AppDelegate.swift */,
+				750705FD1C8927420091D7D6 /* Base.swift */,
 				75247B9C1C7B0BA70046FA43 /* MultipleCellTypeListView */,
 				75247B901C7AEFB00046FA43 /* SimpleViewController */,
 				75247B911C7AEFB90046FA43 /* SingleCellTypeListView */,
@@ -268,6 +271,7 @@
 				75247B8D1C7AEFA70046FA43 /* SimpleTableViewController.swift in Sources */,
 				75247B871C7AEF960046FA43 /* SimpleViewModel.swift in Sources */,
 				75247B861C7AEF960046FA43 /* SimpleViewController.swift in Sources */,
+				750705FE1C8927420091D7D6 /* Base.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

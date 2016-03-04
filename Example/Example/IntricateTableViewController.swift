@@ -16,8 +16,6 @@ class IntricateTableViewController: TableViewController, ControllerTypeAddition 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let sss = teachers.map{ JSON($0) }.map(Teacher.init).map{ TeacherCellModel($0) } + students.map{JSON($0)}.map(Student.init).map{ StudentCellModel($0) }
-        viewModel.items = sss
+        viewModel.items = teachers.map{ JSON($0) }.map(Teacher.init) + students.map{JSON($0)}.map(Student.init)
     }
 }
