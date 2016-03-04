@@ -37,11 +37,12 @@ public protocol ListViewModelType: class, ViewModelType {
     var objs: [ModelType] { get set }
     
     func numberOfSections() -> Int
+    
     func numberOfItemsInSection(section: Int) -> Int
+    
     func itemAtIndexPath(indexPath: NSIndexPath) -> ModelType
     
     func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellType: ClassIdentifier.Type?, cellModelType: CellModelType.Type?)
-//    func cellInfoAtIndexPath(indexPath: NSIndexPath) -> (cellIdentifier: String, cellType: CellModelType.Type?)
 }
 
 ///------------------------------------------------------------------------------------------------

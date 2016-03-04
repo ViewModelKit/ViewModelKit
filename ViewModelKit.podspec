@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "ViewModelKit"
-  s.version     = "0.0.4"
+  s.version     = "0.0.5"
   s.summary     = "ViewModelKit makes it easy to deal with ViewModel in Swift"
   s.homepage    = "https://github.com/ViewModelKit/ViewModelKit"
   s.license     = { :type => "MIT" }

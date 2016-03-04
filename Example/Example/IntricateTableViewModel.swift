@@ -35,7 +35,7 @@ class TeacherCellModel: TableViewCellModel<Teacher> {
     }
     
     required init(_ x: ModelType) {
-        super.init(x)
+        super.init(x)        
     }
 }
 

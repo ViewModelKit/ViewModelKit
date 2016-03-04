@@ -57,6 +57,8 @@ public class TableViewCellModel<Element: ModelType>: CellModel, CellModelTypeAdd
     public typealias T = Element
     
     public required init(_ x: ModelType) {
+        
        super.init(x)
+        
     }
 }
